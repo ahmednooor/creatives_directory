@@ -1,0 +1,386 @@
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    height: auto;
+    overflow-x: hidden;
+    font-family: 'Roboto Mono', monospace;
+    /* font-family: 'Inconsolata', monospace; */
+    /* font-family: 'Fira Mono', monospace; */
+    /* font-family: 'Anonymous Pro', monospace; */
+    /* font-family: 'Ubuntu Mono', monospace; */
+    background-color: #cedfff;
+    letter-spacing: 1px;
+}
+
+a {
+    display: inline-block;
+    padding: 0px 1px;
+    /*text-underline-position: under;*/
+}
+
+a:hover {
+    background-color: #fefea4;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    /*text-underline-position: under;*/
+}
+
+hr {
+    /* border-color: #fefea4; */
+    border-color: #ffffff;
+}
+
+:root {
+    font-size: 12px;
+}
+
+header {
+    text-align: center;
+    /* height: 50px; */
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999; */
+    background-color: #fefea4;
+    /* background-color: #cedfff; */
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+}
+
+.header-logo-container,
+.nav-link-container {
+    height: 50px;
+}
+
+.header-logo {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 8px;
+    padding: 4px 12px;
+    text-align: center;
+    color: #333333;
+    /* font-family: serif; */
+    /* font-weight: bold; */
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    /*text-underline-position: under;*/
+}
+
+.nav-link-container {
+    text-align: center;
+}
+
+.nav-link-container a.nav-link {
+    display: inline-block;
+    margin: 0 2px;
+    margin-top: 13px;
+    padding: 4px 12px;
+    color: #333333;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    /*text-underline-position: under;*/
+}
+
+.nav-link-container a.nav-link:hover {
+    text-decoration: underline;
+    text-decoration-style: solid;
+    /*text-underline-position: under;*/
+}
+
+
+/* --- REGISTER PAGE --- */
+
+.registration-main-container {
+    margin: 40px auto;
+}
+
+.registration-heading {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    /* background-color: #cedfff; */
+    /* padding: 15px; */
+    margin-top: 16px;
+    /* padding: 0px !important; */
+}
+
+.registration-main-container .input-group label {
+    display: inline-block;
+    /* background-color: #cedfff; */
+    background-color: #cedfff;
+    padding: 8px 0px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    /* font-weight: 500; */
+}
+
+.registration-main-container .input-group input,
+.registration-main-container .input-group textarea,
+.registration-main-container .input-group select {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: 0;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 15px;
+    border-bottom: 1px solid #ffffff;
+    background-color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.registration-main-container .input-group input:focus,
+.registration-main-container .input-group textarea:focus,
+.registration-main-container .input-group select:focus {
+    border-bottom: 1px solid #333333;
+}
+
+.registration-main-container .input-group input[type="disabled"],
+.registration-main-container .input-group textarea[type="disabled"],
+.registration-main-container .input-group select[type="disabled"] {
+    /* border-bottom: 1px solid #333333; */
+    background-color: #eeeeee;
+}
+
+.registration-main-container .input-group input[type="submit"] {
+    background-color: #fefea4;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #fefea4;
+}
+
+.registration-main-container .input-group input[type="submit"]:hover,
+.registration-main-container .input-group input[type="submit"]:active {
+    background-color: #333333;
+    border-bottom: 1px solid #333333;
+    color: #fefea4;
+    box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+}
+
+.registration-main-container .input-group input[type="submit"]:active {
+    box-shadow: none;
+}
+
+.registration-main-container .input-group input[type="submit"]:focus {
+    box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- STATUS PAGE --- */
+
+.status-page-message h2 {
+    text-align: center;
+    display: block;
+    font-weight: normal;
+    /* background-color: #fefea4; */
+    color: #333333;
+    padding: 20px;
+}
+
+
+/* --- LOGIN PAGE --- */
+
+.forgot-password-link-container {
+    text-align: center;
+}
+
+.forgot-password-link {
+    color: #333333;
+    /* text-decoration: none; */
+    /* font-style: italic; */
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    /*text-underline-position: under;*/
+}
+
+.forgot-password-link:hover {
+    color: #333333;
+    text-decoration-style: solid;
+}
+
+
+/* --- PROFILE PAGE --- */
+
+.profile-heading-name {
+    font-size: 2rem;
+    text-align: center;
+    /* background-color: #ffffff; */
+    /* padding: 4px 0px; */
+    margin-bottom: 16px;
+}
+
+.profile-field {
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.profile-field a {
+    color: #333333;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    /*text-underline-position: under;*/
+}
+
+.profile-field a:hover {
+    text-decoration-style: solid;
+    /*text-underline-position: under;*/
+}
+
+.profile-field strong {
+    display: inline-block;
+    margin-bottom: 4px;
+    /* font-weight: normal; */
+    /* font-weight: bold; */
+    padding: 0px 1px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.small-info-text {
+    font-size: 1rem;
+    padding: 2px;
+    margin-top: 4px;
+    font-weight: 500;
+    background-color: #fefea4;
+}
+
+
+/* --- EDIT PROFILE PAGE */
+
+.delete-account-confirmation-container {
+    font-size: 0px;
+}
+
+.danger-button {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: 0;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 15px;
+    background-color: #aaaaaa;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.danger-button:hover,
+.danger-button:active {
+    background-color: tomato;
+    /* box-shadow: 0 0 26px rgba(0,0,0,0.2); */
+    box-shadow: none;
+}
+
+.danger-button:active {
+    box-shadow: none;
+}
+
+.danger-button:focus {
+    /* box-shadow: 0 0 26px rgba(0,0,0,0.2); */
+    box-shadow: none;
+}
+
+.danger-text {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.danger-secondary-buttons {
+    background-color: salmon;
+    ;
+    display: inline-block;
+    width: 49.9%;
+    margin: 0 !important;
+    padding: 8px;
+}
+
+.cncl-button {
+    background-color: #aaaaaa;
+}
+
+.cncl-button:hover,
+.cncl-button:active,
+.cncl-button:focus {
+    background-color: #666666;
+}
+
+
+/* --- HOME PAGE --- */
+
+.home-main-container {
+    margin: 40px auto;
+}
+
+.home-main-container .input-group {
+    padding: 0px 6px !important;
+}
+
+.home-intro {
+    /* padding-bottom: 10px;
+    border-bottom: 1px solid #333333; */
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+/* --- SEARCH RESULTS PAGE --- */
+
+.search-results-main-container .search-result-item {
+    background-color: #ffffff;
+}
+
+.search-results-main-container .search-result-item-link {
+    display: block;
+    background-color: #ffffff;
+    padding: 8px 0px;
+    color: #333333;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+}
+
+.search-results-main-container .search-result-item-link:hover {
+    background-color: #fefea4;
+    box-shadow: 0 0 26px rgba(0, 0, 0, 0.1);
+}
+
+.search-results-main-container .search-result-item-link span {
+    margin-top: 6px;
+    display: block;
+    word-break: break-all;
+}
+
+.search-results-main-container .search-result-item-link span strong {
+    /* background-color: #fefea4; */
+    /* font-weight: normal; */
+}
+
+.search-results-main-container span.name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.search-results-main-container .details {
+    font-size: 1rem;
+}

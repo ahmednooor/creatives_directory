@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}Creatives Directory{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="registration-main-container home-main-container">
+                    <!-- <p class="home-intro">Directory of Creatives in Pakistan<br><br>--------</p> -->
+                    <p class="home-intro">Yellow Pages for Creatives in Pakistan<br><br>--------</p>
+                    <br>
+                    <h3 class="registration-heading">SEARCH</h3>
+                    <form action="/search" method="GET" id="search_form">
+                        <div class="col-md-6 input-group">
+                            <label for="city">Location</label>
+                            <select name="city" id="city">
+                                <option value=""></option>
+                                {% for _city in cities_list %}
+                                    <option value="{{ _city }}">{{ _city }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 input-group">
+                            <label for="primary_expertise">Expertise</label>
+                            <select name="primary_expertise" id="primary_expertise">
+                                <option value=""></option>
+                                {% for expertise in expertise_list %}
+                                    <option value="{{ expertise }}">{{ expertise }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- <div class="col-md-4 input-group">
+                            <label for="secondary_expertise">Secondary Expertise</label>
+                            <select name="secondary_expertise" id="secondary_expertise">
+                                <option value=""></option>
+                                {% for expertise in expertise_list %}
+                                    <option value="{{ expertise }}">{{ expertise }}</option>
+                                {% endfor %}
+                            </select>
+                        </div> -->
+                        <div class="col-xs-12">
+                                <!-- <hr> -->
+                                <br>
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" id="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

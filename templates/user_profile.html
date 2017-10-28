@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ creative['name'] }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="registration-main-container">
+                    {% if show_edit_btn == True %}
+                        <p class="profile-field"><a href="{{ url_for('edit_my_profile') }}">Edit My Profile</a></p>
+                    {% endif %}
+                    <h3 class="profile-heading-name">{{ creative['name'] }}</h3>
+                    <!-- <div class="col-sm-6"> -->
+                        {% if creative['primary_expertise'] != '' %}
+                            <p class="profile-field"><strong>Primary Expertise</strong><br>{{ creative['primary_expertise'] }}</p>
+                        {% endif %}
+                        {% if creative['secondary_expertise'] != '' %}
+                            <p class="profile-field"><strong>Secondary Expertise</strong><br>{{ creative['secondary_expertise'] }}</p>
+                        {% endif %}
+                        {% if creative['city'] != '' %}
+                            <p class="profile-field"><strong>Location</strong><br>{{ creative['city'] }}</p>
+                        {% endif %}
+                        <hr>
+                        {% if creative['primary_portfolio'] != '' %}
+                            <p class="profile-field"><strong>Portfolio Link</strong><br><a href="{{ creative['primary_portfolio'] }}" target="_blank">{{ creative['primary_portfolio'] }}</a></p>
+                        {% endif %}
+                        {% if creative['personal_website'] != '' %}
+                            <p class="profile-field"><strong>Website Link</strong><br><a href="{{ creative['personal_website'] }}" target="_blank">{{ creative['personal_website'] }}</a></p>
+                        {% endif %}
+                        {% if creative['email'] != '' %}
+                            <p class="profile-field"><strong>Email</strong><br>{{ creative['email'] }}</p>
+                        {% endif %}
+                        <hr>
+                    <!-- </div> -->
+                    <!-- <div class="col-sm-6"> -->
+                        {% if creative['small_intro'] != '' %}
+                            <p class="profile-field"><strong>Intro</strong><br>{{ creative['small_intro'] }}</p>
+                        {% endif %}
+                        {% if creative['behance'] != '' or creative['dribbble'] != '' or creative['linkedin'] != '' or creative['github'] != '' or creative['gitlab'] != '' or creative['twitter'] != '' or creative['facebook'] != '' %}
+                            <hr>
+                            <p class="profile-field"><strong>Other Links</strong><br>
+                            {% if creative['behance'] != '' %}
+                                <a href="{{ creative['behance'] }}" target="_blank">Behance</a>
+                            {% endif %}
+                            {% if creative['dribbble'] != '' %}
+                                <a href="{{ creative['dribbble'] }}" target="_blank">Dribbble</a>
+                            {% endif %}
+                            {% if creative['linkedin'] != '' %}
+                                <a href="{{ creative['linkedin'] }}" target="_blank">LinkedIn</a>
+                            {% endif %}
+                            {% if creative['github'] != '' %}
+                                <a href="{{ creative['github'] }}" target="_blank">Github</a>
+                            {% endif %}
+                            {% if creative['gitlab'] != '' %}
+                                <a href="{{ creative['gitlab'] }}" target="_blank">Gitlab</a>
+                            {% endif %}
+                            {% if creative['twitter'] != '' %}
+                                <a href="{{ creative['twitter'] }}" target="_blank">Twitter</a>
+                            {% endif %}
+                            {% if creative['facebook'] != '' %}
+                                <a href="{{ creative['facebook'] }}" target="_blank">Facebook</a>
+                            {% endif %}
+                            </p>
+                        {% endif %}
+                    <!-- </div> -->
+                    <!-- <hr> -->
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

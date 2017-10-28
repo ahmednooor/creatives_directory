@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit My Profile{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="registration-main-container">
+                    <h3 class="registration-heading">EDIT MY PROFILE</h3>
+                    <form action="/edit_my_profile" method="POST" id="registeration_form">
+                        <div class="input-group">
+                            <label for="name">Name (required)</label>
+                            <input type="text" name="name" id="name" required value="{{ creative['name'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email:</label>
+                            <p class="">{{ creative['email'] }}</p>
+                            <p class="small-info-text"><em> - If you want to change your Email, you need to delete this account and re-register with your new Email.</em></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password:</label>
+                            <p class="">********</p>
+                            <p class="small-info-text"><em> - Use "Forgot Password?" link at the login page to change your Password.</em></p>
+                        </div>
+                        <hr>
+                        <div class="input-group">
+                            <label for="city">Location (required)</label>
+                            <select name="city" id="city" required>
+                                <option value=""></option>
+                                {% for _city in cities_list %}
+                                    <option value="{{ _city }}">{{ _city }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="primary_expertise">Primary Expertise (required)</label>
+                            <select name="primary_expertise" id="primary_expertise" required>
+                                <option value=""></option>
+                                {% for expertise in expertise_list %}
+                                    <option value="{{ expertise }}">{{ expertise }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="secondary_expertise">Secondary Expertise (optional)</label>
+                            <select name="secondary_expertise" id="secondary_expertise">
+                                <option value=""></option>
+                                {% for expertise in expertise_list %}
+                                    <option value="{{ expertise }}">{{ expertise }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="small_intro">Small Intro (optional) max: 500 characters</label>
+                            <textarea type="text" name="small_intro" id="small_intro" rows="4">{{ creative['small_intro'] }}</textarea>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="input-group">
+                            <label for="primary_portfolio">Primary Portfolio Link (required)</label>
+                            <input type="text" name="primary_portfolio" id="primary_portfolio" required value="{{ creative['primary_portfolio'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="personal_website">Your Website Link (optional)</label>
+                            <input type="text" name="personal_website" id="personal_website" value="{{ creative['personal_website'] }}">
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="input-group">
+                            <label for="behance">Behance Link (optional)</label>
+                            <input type="text" name="behance" id="behance" value="{{ creative['behance'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="dribbble">Dribbble Link (optional)</label>
+                            <input type="text" name="dribbble" id="dribbble" value="{{ creative['dribbble'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="linkedin">Linkedin Link (optional)</label>
+                            <input type="text" name="linkedin" id="linkedin" value="{{ creative['linkedin'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="github">Github Link (optional)</label>
+                            <input type="text" name="github" id="github" value="{{ creative['github'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="gitlab">Gitlab Link (optional)</label>
+                            <input type="text" name="gitlab" id="gitlab" value="{{ creative['gitlab'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="twitter">Twitter Link (optional)</label>
+                            <input type="text" name="twitter" id="twitter" value="{{ creative['twitter'] }}">
+                        </div>
+                        <div class="input-group">
+                            <label for="facebook">Facebook Link (optional)</label>
+                            <input type="text" name="facebook" id="facebook" value="{{ creative['facebook'] }}">
+                        </div>
+                        <!-- <br> -->
+                        <hr>
+                        <div class="input-group" id="status_text">
+                            
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" id="submit" value="Submit">
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                    <hr>
+                    <!-- <br> -->
+                    <div class="input-group">
+                        <button class="danger-button" id="delete_account_dialog_button">DELETE THIS ACCOUNT</button>
+                        <div id="delete_account_confirmation_container" class="delete-account-confirmation-container hidden">
+                            <p class="small-info-text danger-text"><em> - Are you sure you want to Permenanently DELETE Your Account?</em><br><br></p>
+                            <form action="/delete_my_account" method="POST">
+                                <input type="text" name="_id" value="{{ creative['id'] }}" style="display: none !important;" class="hidden">
+                                <button class="danger-button danger-secondary-buttons" type="submit" id="submit_deletion">YES</button>
+                                <button class="danger-button danger-secondary-buttons cncl-button" type="button">NO</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+<script>
+    var city_options = $('#city option');
+    var primary_expertise_options = $('#primary_expertise option');
+    var secondary_expertise_options = $('#secondary_expertise option');
+
+    
+    city_options.each(function(option) {
+        if ($(this).attr('value') == "{{ creative['city'] }}") {
+            $(this).attr('selected', '');
+            return;
+        }
+    });
+    primary_expertise_options.each(function(option) {
+        if ($(this).attr('value') == "{{ creative['primary_expertise'] }}") {
+            $(this).attr('selected', '');
+            return;
+        }
+    });
+    secondary_expertise_options.each(function(option) {
+        if ($(this).attr('value') == "{{ creative['secondary_expertise'] }}") {
+            $(this).attr('selected', '');
+            return;
+        }
+    });
+
+    var registeration_form = $('#registeration_form');
+    registeration_form.on('submit', function(event) {
+        event.preventDefault();
+        $('#status_text').html('Processing ...');
+        $.ajax({
+            url: '/edit_my_profile',
+            data: registeration_form.serialize(),
+            type: 'POST'
+        }).done(function(data, textStatus, jqXHR){
+            console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+            console.log('Success!');
+            if (data[0]["status"] == "error") {
+                $('#status_text').html('<p style="color:orangered;">' + data[0]["msg"] + '</p>')
+            } else if (data[0]["status"] == "success"){
+                $('#registeration_form input').attr('disabled', 'true');
+                $('#registeration_form textarea').attr('disabled', 'true');
+                $('#registeration_form select').attr('disabled', 'true');
+                $('#status_text').html('<p style="color:green;">' + data[0]["msg"] + '</p>')
+            }
+        }).fail(function(data){
+            console.log("ERROR:", data);
+            $('#status_text').html('<p style="color:orangered;">Sorry. Something went wrong.</p>')
+        });
+    });
+
+
+    var delete_account_dialog_button = $('#delete_account_dialog_button');
+    var delete_account_confirmation_container = $('#delete_account_confirmation_container');
+    var cncl_button = $('#delete_account_confirmation_container .cncl-button');
+    delete_account_dialog_button.on('click', function() {
+        delete_account_confirmation_container.toggleClass('hidden');
+    });
+    cncl_button.on('click', function() {
+        delete_account_confirmation_container.addClass('hidden');
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="registration-main-container search-results-main-container">
+                    <h3 class="registration-heading">SEARCH RESULTS</h3>
+                    <!-- <div class="input-group search-result-item">
+                        <div class="col-sm-12">
+                            <a href="#/" class="name">John Doe Johnathon Douglas</a>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="details"><strong>Location:</strong><br>Lahore, Punjab</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="details"><strong>Primary Expertise:</strong><br>Graphic Design</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="details"><strong>Secondary Expertise:</strong><br>Advertising</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="details"><strong>Portfolio:</strong><br><a class="portfolio-link" href="#/">http://behance.net/anixel</a></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> -->
+                    {% if total_creatives == 0 %}
+                        <p class="home-intro"><br>NOTHING FOUND</p>
+                    {% endif %}
+                    {% for creative in creatives %}
+                    <div class="input-group search-result-item">
+                        <a href="{{ url_for('user_profile', id=creative['id'])}}" target="_blank" class="search-result-item-link">
+                            <span class="col-sm-12 name">{{ creative['name'] }}</span>
+                            <span class="col-sm-4 details"><strong>Location:</strong><br>{{ creative['city'] }}</span>
+                            <span class="col-sm-4 details"><strong>Primary:</strong><br>{{ creative['primary_expertise'] }}</span>
+                            {% if creative['secondary_expertise'] != '' %}
+                                <span class="col-sm-4 details"><strong>Secondary:</strong><br>{{ creative['secondary_expertise'] }}</span>
+                            {% else %}
+                            <span class="col-sm-4 details"><strong>Secondary:</strong><br>N/A</span>
+                            {% endif %}
+                            <span class="clearfix"></span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
