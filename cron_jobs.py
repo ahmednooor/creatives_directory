@@ -83,7 +83,7 @@ def clear_expired_email_tokens():
     for i in range(creatives_len):
         if creatives[i]['email_confirmation_token'] != '':
             try:
-                email = URL_Tokenizer.loads(creatives[i]['email_confirmation_token'], salt='email-confirm', max_age=(40))
+                email = URL_Tokenizer.loads(creatives[i]['email_confirmation_token'], salt='email-confirm', max_age=(3600 * 12))
             except SignatureExpired:
                 db.execute("DELETE FROM creatives WHERE id=:id AND email_confirmed=:email_confirmed", id=creatives[i]['id'], email_confirmed='false')
                 print('JOB PROCESS: Non-Confirmed Account Deleted!', email)
@@ -95,3 +95,4 @@ while True:
     schedule.run_pending()
     time.sleep(1)
 
+print("CRON JOBS RUNNING ...")

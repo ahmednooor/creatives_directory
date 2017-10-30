@@ -229,7 +229,7 @@ def register():
 @app.route('/confirm_email/<token>')
 def confirm_email(token):
     try:
-        email = URL_Tokenizer.loads(token, salt='email-confirm', max_age=(40))
+        email = URL_Tokenizer.loads(token, salt='email-confirm', max_age=(3600 * 12))
     except SignatureExpired:
         db.execute("DELETE FROM creatives WHERE email_confirmation_token=:email_confirmation_token", email_confirmation_token=token)
         return render_template('status.html', msg="Token Expired! Please Re-Register.")
