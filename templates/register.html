@@ -122,31 +122,36 @@
 
 <script>
     var registeration_form = $('#registeration_form');
+    var request_sent = false;
     registeration_form.on('submit', function(event) {
         event.preventDefault();
-        $('#status_text').html('Processing ...');
-        // var form_data = new FormData(registeration_form);
-        $.ajax({
-            url: '/register',
-            data: registeration_form.serialize(),
-            type: 'POST'
-        }).done(function(data, textStatus, jqXHR){
-            console.log(data);
-            console.log(textStatus);
-            console.log(jqXHR);
-            console.log('Success!');
-            if (data[0]["status"] == "error") {
-                $('#status_text').html('<p style="color:orangered;">' + data[0]["msg"] + '</p>')
-            } else if (data[0]["status"] == "success"){
-                $('#registeration_form input').attr('disabled', 'true');
-                $('#registeration_form textarea').attr('disabled', 'true');
-                $('#registeration_form select').attr('disabled', 'true');
-                $('#status_text').html('<p style="color:green;">' + data[0]["msg"] + '</p>')
-            }
-        }).fail(function(data){
-            console.log("ERROR:", data);
-            $('#status_text').html('<p style="color:orangered;">Sorry. Something went wrong.</p>')
-        });
+        if (request_sent == false) {
+            request_sent = true;
+            $('#status_text').html('Processing ...');
+            $.ajax({
+                url: '/register',
+                data: registeration_form.serialize(),
+                type: 'POST'
+            }).done(function(data, textStatus, jqXHR){
+                request_sent = false;
+                console.log(data);
+                console.log(textStatus);
+                console.log(jqXHR);
+                console.log('Success!');
+                if (data[0]["status"] == "error") {
+                    $('#status_text').html('<p style="color:orangered;">' + data[0]["msg"] + '</p>')
+                } else if (data[0]["status"] == "success"){
+                    $('#registeration_form input').attr('disabled', 'true');
+                    $('#registeration_form textarea').attr('disabled', 'true');
+                    $('#registeration_form select').attr('disabled', 'true');
+                    $('#status_text').html('<p style="color:green;">' + data[0]["msg"] + '</p>')
+                }
+            }).fail(function(data){
+                request_sent = false;
+                console.log("ERROR:", data);
+                $('#status_text').html('<p style="color:orangered;">Sorry. Something went wrong.</p>')
+            });
+        }
     });
 
 </script>

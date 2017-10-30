@@ -3,7 +3,8 @@
 *:after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 html,
@@ -17,10 +18,6 @@ body {
     height: auto;
     overflow-x: hidden;
     font-family: 'Roboto Mono', monospace;
-    /* font-family: 'Inconsolata', monospace; */
-    /* font-family: 'Fira Mono', monospace; */
-    /* font-family: 'Anonymous Pro', monospace; */
-    /* font-family: 'Ubuntu Mono', monospace; */
     background-color: #cedfff;
     letter-spacing: 1px;
 }
@@ -28,19 +25,17 @@ body {
 a {
     display: inline-block;
     padding: 0px 1px;
-    /*text-underline-position: under;*/
 }
 
 a:hover {
     background-color: #fefea4;
     color: inherit;
     text-decoration: underline;
-    text-decoration-style: solid;
-    /*text-underline-position: under;*/
+    -webkit-text-decoration-style: solid;
+            text-decoration-style: solid;
 }
 
 hr {
-    /* border-color: #fefea4; */
     border-color: #ffffff;
 }
 
@@ -57,8 +52,8 @@ header {
     right: 0;
     z-index: 99999; */
     background-color: #fefea4;
-    /* background-color: #cedfff; */
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
 }
 
 .header-logo-container,
@@ -73,11 +68,8 @@ header {
     padding: 4px 12px;
     text-align: center;
     color: #333333;
-    /* font-family: serif; */
-    /* font-weight: bold; */
     font-size: 1.5rem;
     text-transform: uppercase;
-    /*text-underline-position: under;*/
 }
 
 .nav-link-container {
@@ -93,13 +85,12 @@ header {
     font-size: 0.9rem;
     text-transform: uppercase;
     text-decoration: none;
-    /*text-underline-position: under;*/
 }
 
 .nav-link-container a.nav-link:hover {
     text-decoration: underline;
-    text-decoration-style: solid;
-    /*text-underline-position: under;*/
+    -webkit-text-decoration-style: solid;
+            text-decoration-style: solid;
 }
 
 
@@ -115,21 +106,16 @@ header {
 }
 
 .input-group {
-    /* background-color: #cedfff; */
-    /* padding: 15px; */
     margin-top: 16px;
-    /* padding: 0px !important; */
 }
 
 .registration-main-container .input-group label {
     display: inline-block;
-    /* background-color: #cedfff; */
     background-color: #cedfff;
     padding: 8px 0px;
     font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 1px;
-    /* font-weight: 500; */
 }
 
 .registration-main-container .input-group input,
@@ -156,13 +142,13 @@ header {
 .registration-main-container .input-group input[type="disabled"],
 .registration-main-container .input-group textarea[type="disabled"],
 .registration-main-container .input-group select[type="disabled"] {
-    /* border-bottom: 1px solid #333333; */
     background-color: #eeeeee;
 }
 
 .registration-main-container .input-group input[type="submit"] {
     background-color: #fefea4;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #fefea4;
 }
 
@@ -171,15 +157,18 @@ header {
     background-color: #333333;
     border-bottom: 1px solid #333333;
     color: #fefea4;
-    box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
 }
 
 .registration-main-container .input-group input[type="submit"]:active {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 .registration-main-container .input-group input[type="submit"]:focus {
-    box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 26px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -189,7 +178,6 @@ header {
     text-align: center;
     display: block;
     font-weight: normal;
-    /* background-color: #fefea4; */
     color: #333333;
     padding: 20px;
 }
@@ -203,16 +191,15 @@ header {
 
 .forgot-password-link {
     color: #333333;
-    /* text-decoration: none; */
-    /* font-style: italic; */
     text-decoration: underline;
-    text-decoration-style: dotted;
-    /*text-underline-position: under;*/
+    -webkit-text-decoration-style: dotted;
+            text-decoration-style: dotted;
 }
 
 .forgot-password-link:hover {
     color: #333333;
-    text-decoration-style: solid;
+    -webkit-text-decoration-style: solid;
+            text-decoration-style: solid;
 }
 
 
@@ -221,8 +208,6 @@ header {
 .profile-heading-name {
     font-size: 2rem;
     text-align: center;
-    /* background-color: #ffffff; */
-    /* padding: 4px 0px; */
     margin-bottom: 16px;
 }
 
@@ -236,20 +221,18 @@ header {
 .profile-field a {
     color: #333333;
     text-decoration: underline;
-    text-decoration-style: dotted;
-    /*text-underline-position: under;*/
+    -webkit-text-decoration-style: dotted;
+            text-decoration-style: dotted;
 }
 
 .profile-field a:hover {
-    text-decoration-style: solid;
-    /*text-underline-position: under;*/
+    -webkit-text-decoration-style: solid;
+            text-decoration-style: solid;
 }
 
 .profile-field strong {
     display: inline-block;
     margin-bottom: 4px;
-    /* font-weight: normal; */
-    /* font-weight: bold; */
     padding: 0px 1px;
     background-color: #ffffff;
     font-size: 1rem;
@@ -269,6 +252,7 @@ header {
 
 .delete-account-confirmation-container {
     font-size: 0px;
+    text-align: center;
 }
 
 .danger-button {
@@ -287,17 +271,18 @@ header {
 .danger-button:hover,
 .danger-button:active {
     background-color: tomato;
-    /* box-shadow: 0 0 26px rgba(0,0,0,0.2); */
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 .danger-button:active {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 .danger-button:focus {
-    /* box-shadow: 0 0 26px rgba(0,0,0,0.2); */
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 .danger-text {
@@ -307,9 +292,10 @@ header {
 
 .danger-secondary-buttons {
     background-color: salmon;
-    ;
     display: inline-block;
-    width: 49.9%;
+    width: 49.8%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin: 0 !important;
     padding: 8px;
 }
@@ -336,8 +322,6 @@ header {
 }
 
 .home-intro {
-    /* padding-bottom: 10px;
-    border-bottom: 1px solid #333333; */
     text-align: center;
     text-transform: uppercase;
     font-weight: 500;
@@ -356,23 +340,20 @@ header {
     background-color: #ffffff;
     padding: 8px 0px;
     color: #333333;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
 }
 
 .search-results-main-container .search-result-item-link:hover {
     background-color: #fefea4;
-    box-shadow: 0 0 26px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 26px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 26px rgba(0, 0, 0, 0.1);
 }
 
 .search-results-main-container .search-result-item-link span {
     margin-top: 6px;
     display: block;
     word-break: break-all;
-}
-
-.search-results-main-container .search-result-item-link span strong {
-    /* background-color: #fefea4; */
-    /* font-weight: normal; */
 }
 
 .search-results-main-container span.name {

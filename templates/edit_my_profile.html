@@ -112,7 +112,7 @@
                     <div class="input-group">
                         <button class="danger-button" id="delete_account_dialog_button">DELETE THIS ACCOUNT</button>
                         <div id="delete_account_confirmation_container" class="delete-account-confirmation-container hidden">
-                            <p class="small-info-text danger-text"><em> - Are you sure you want to Permenanently DELETE Your Account?</em><br><br></p>
+                            <p class="small-info-text danger-text"><br><em> - Are you sure you want to Permenanently DELETE Your Account?</em><br><br></p>
                             <form action="/delete_my_account" method="POST">
                                 <input type="text" name="_id" value="{{ creative['id'] }}" style="display: none !important;" class="hidden">
                                 <button class="danger-button danger-secondary-buttons" type="submit" id="submit_deletion">YES</button>

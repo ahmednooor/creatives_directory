@@ -8,6 +8,8 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 import sqlalchemy
 # from cs50 import SQL
 from passlib.hash import sha256_crypt
+import schedule
+import time
 
 ### CS50 wrapper for SQLAlchemy
 class SQL(object):
@@ -108,9 +110,11 @@ def before_request():
         g.name = session["name"]
         g.logged_in = session["logged_in"]
 
+
 @app.route('/')
 def index():
     return render_template('home.html', cities_list=cities_list, expertise_list=expertise_list)
+
 
 @app.route('/search')
 def search():
@@ -125,7 +129,7 @@ def search():
     creatives = sorted(creatives, key=lambda k: k['name'].lower()) 
 
     return render_template('search_results.html', creatives=creatives, total_creatives=len(creatives))
-    # return jsonify(creatives)
+
 
 ### Login
 @app.route('/login', methods=['GET', 'POST'])
@@ -153,6 +157,7 @@ def login():
     else:
         return redirect(url_for('index'))
 
+
 ### Logout
 @app.route("/logout")
 def logout():
@@ -160,6 +165,7 @@ def logout():
     session.pop("name", None)
     session.pop("logged_in", None)
     return redirect(url_for("index"))
+
 
 ### register
 @app.route('/register', methods=['GET', 'POST'])
@@ -218,18 +224,23 @@ def register():
     else:
         return redirect(url_for('index'))
 
+
+### Confirm Email via Token
 @app.route('/confirm_email/<token>')
 def confirm_email(token):
     try:
-        email = URL_Tokenizer.loads(token, salt='email-confirm', max_age=(3600 * 24))
+        email = URL_Tokenizer.loads(token, salt='email-confirm', max_age=(40))
     except SignatureExpired:
-        return render_template('status.html', msg="Token Expired!")
+        db.execute("DELETE FROM creatives WHERE email_confirmation_token=:email_confirmation_token", email_confirmation_token=token)
+        return render_template('status.html', msg="Token Expired! Please Re-Register.")
     
     db.execute("UPDATE creatives SET email_confirmed=:email_confirmed WHERE email=:email", email_confirmed="true", email=email)
     db.execute("UPDATE creatives SET email_confirmation_token=:empty WHERE email=:email", empty="", email=email)
     
     return render_template('status.html', msg="Email Confirmed!")
 
+
+### Password Reset Link
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'GET':
@@ -254,6 +265,8 @@ def forgot_password():
     else:
         return redirect(url_for('index'))
 
+
+### Reset Password via Token
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if request.method == 'GET':
@@ -282,6 +295,8 @@ def reset_password(token):
     else:
         return redirect(url_for('index'))
 
+
+### User/Creative Profile
 @app.route('/profile/<id>', methods=['GET', 'POST'])
 def user_profile(id):
     if request.method == 'GET':
@@ -299,6 +314,8 @@ def user_profile(id):
     else:
         return redirect(url_for('index'))
 
+
+### Edit Currently Logged In User's Profile
 @app.route('/edit_my_profile', methods=['GET', 'POST'])
 def edit_my_profile():
     if g.logged_in is True and request.method == 'GET':
@@ -342,10 +359,12 @@ def edit_my_profile():
     else:
         return redirect(url_for('index'))
 
+
+### Delete Currently Logged In User's Profile
 @app.route('/delete_my_account', methods=['GET', 'POST'])
 def delete_my_account():
     if g.logged_in is True and request.method == 'POST':
-        _id = request.form['_id'];
+        _id = request.form['_id']
         if g.user_id != _id:
             return render_template('status.html', msg="Account Deletion Failed. [ERROR: Creds Mismatch]")
         else:
@@ -361,6 +380,7 @@ def delete_my_account():
             return render_template('status.html', msg="Account Deletion Successful")
     else:
         return redirect(url_for('index'))
+
 
 ### Run Flask App
 if __name__ == "__main__":
