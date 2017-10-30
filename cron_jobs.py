@@ -91,8 +91,8 @@ def clear_expired_email_tokens():
 
 schedule.every(6).hours.do(clear_expired_email_tokens)
 
+print("CRON JOBS RUNNING ...")
+
 while True:
     schedule.run_pending()
     time.sleep(1)
-
-print("CRON JOBS RUNNING ...")
